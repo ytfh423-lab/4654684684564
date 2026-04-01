@@ -23931,14 +23931,9 @@ div#swiper_container:hover {
   margin-right: 8px;
   font-size: 22px;
 }
+/* 原设计用 ::after + inset 黑影衬托底部文案；无文案时去掉，避免压暗整张图 */
 .topGroup .todayCard::after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  box-shadow: 0 -109px 133px -9px #000000 inset;
+  content: none;
 }
 
 .topGroup .todayCard.hide {
