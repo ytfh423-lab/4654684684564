@@ -41,8 +41,16 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* 右侧「今日推荐」大图卡片：只保留背景图，去掉叠字与「更多推荐」按钮 */
+/* 右侧「今日推荐」大图卡片：去掉叠字与「更多推荐」（配置已清空 tips/title，此处防缓存/兜底） */
+#todayCard .todayCard-info,
+#todayCard .banner-button-group,
 .topGroup .todayCard .todayCard-info,
 .topGroup .todayCard .banner-button-group {
   display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
 }
