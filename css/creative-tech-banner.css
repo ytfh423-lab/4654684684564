@@ -54,3 +54,20 @@
   margin: 0 !important;
   border: none !important;
 }
+
+/* 今日推荐大图：兜底铺满 + 去掉懒加载透明/模糊导致的「发暗」 */
+.topGroup .todayCard::after {
+  content: none !important;
+  box-shadow: none !important;
+}
+#todayCard img.todayCard-cover,
+.topGroup .todayCard .todayCard-cover {
+  height: 100% !important;
+  min-height: 100% !important;
+  width: 100% !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
