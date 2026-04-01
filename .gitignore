@@ -3,6 +3,6 @@ Thumbs.db
 db.json
 *.log
 node_modules/
-public/
+# public/ 需纳入仓库，供宝塔 git pull 后直接做网站根目录（或指向 public）
 .deploy*/
 _multiconfig.yml

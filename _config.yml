@@ -12,10 +12,9 @@ language: en
 timezone: ''
 
 # URL
-## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-## 若用宝塔/自有域名部署，请改成 https://你的域名/ 并把下面 root 改回 /
-url: https://ytfh423-lab.github.io/4654684684564
-root: /4654684684564/
+## Set your site url here. 宝塔部署：把下面改成你的真实域名（含 https）
+url: https://example.com
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
