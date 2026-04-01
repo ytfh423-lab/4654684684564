@@ -1,0 +1,60 @@
+/* 侧栏作者卡：橄榄绿底 + 弱化主题默认渐变与悬停隐藏头像 */
+#aside-content > .card-widget.card-info {
+  background: #4a5640 !important;
+  border-radius: 16px !important;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+}
+
+#aside-content > .card-widget.card-info::before {
+  animation: none !important;
+  background: transparent !important;
+  background-size: auto !important;
+}
+
+#aside-content .card-info:hover .author-info-avatar,
+#aside-content .card-info:hover .author-info__description,
+#aside-content .card-info:hover .author-status {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+#aside-content .card-info .author-info__name {
+  color: #f5f6f3 !important;
+  font-size: 1.35rem !important;
+}
+
+#aside-content .card-info .author-info__desc {
+  color: rgba(245, 246, 243, 0.88) !important;
+  font-size: 0.85rem !important;
+}
+
+#aside-content .card-info #author-info__sayhi {
+  background: rgba(255, 255, 255, 0.18) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+#aside-content .card-info .author-info-avatar .avatar-img {
+  border: 4px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+#aside-content .card-info .card-info-social-icons .social-icon {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(6px);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+#aside-content .card-info .card-info-social-icons .social-icon:hover {
+  background: rgba(255, 255, 255, 0.28) !important;
+  color: #fff !important;
+}
+
+#aside-content .card-info .author-info__description:empty {
+  display: none;
+}
