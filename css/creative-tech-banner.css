@@ -40,3 +40,9 @@
 #skills-tags-group-all .tags-group-icon {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+/* 右侧「今日推荐」大图卡片：只保留背景图，去掉叠字与「更多推荐」按钮 */
+.topGroup .todayCard .todayCard-info,
+.topGroup .todayCard .banner-button-group {
+  display: none !important;
+}
