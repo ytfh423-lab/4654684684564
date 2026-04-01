@@ -23886,9 +23886,13 @@ div#swiper_container:hover {
   position: absolute;
   min-width: 100%;
   min-height: 100%;
+  height: 100%;
+  width: 100%;
   top: 0;
   left: 0;
+  object-fit: cover;
   background-size: cover;
+  border-radius: 12px;
   z-index: -1;
   transition: 0.3s;
 }
@@ -23940,13 +23944,7 @@ div#swiper_container:hover {
   opacity: 0;
   pointer-events: none;
 }
-.topGroup .todayCard img {
-  object-fit: cover;
-  width: 100%;
-  height: 80px;
-  background: var(--anzhiyu-secondbg);
-  border-radius: 12px 12px 0 0;
-}
+/* 勿用 .todayCard img 统一设 height:80px，会只显示一条图、下方整块深色底像「黑影」 */
 .topGroup .recent-post-item:nth-child(4),
 .topGroup .recent-post-item:nth-child(5),
 .topGroup .recent-post-item:nth-child(6) {
