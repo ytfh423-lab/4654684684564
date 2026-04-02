@@ -1,0 +1,108 @@
+/* 自定义光标：外环缓动跟随 + 内点；触摸 / 减少动效时不启用（由 JS 不加类名） */
+
+body.is-custom-cursor {
+  cursor: none !important;
+}
+
+body.is-custom-cursor * {
+  cursor: none !important;
+}
+
+body.is-custom-cursor input:not([type="checkbox"]):not([type="radio"]),
+body.is-custom-cursor textarea,
+body.is-custom-cursor select,
+body.is-custom-cursor [contenteditable="true"] {
+  cursor: text !important;
+}
+
+.custom-cursor-dot,
+.custom-cursor-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+body.is-custom-cursor .custom-cursor-dot,
+body.is-custom-cursor .custom-cursor-ring {
+  opacity: 1;
+}
+
+body.is-custom-cursor.cursor-native .custom-cursor-dot,
+body.is-custom-cursor.cursor-native .custom-cursor-ring {
+  opacity: 0;
+}
+
+body.is-custom-cursor.cursor-native {
+  cursor: auto !important;
+}
+
+body.is-custom-cursor.cursor-native * {
+  cursor: inherit !important;
+}
+
+/* 内点：实心 + 微光 */
+.custom-cursor-dot {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #a5b4fc,
+    #6366f1 45%,
+    #4f46e5 100%
+  );
+  box-shadow:
+    0 0 12px rgba(99, 102, 241, 0.55),
+    0 0 2px rgba(255, 255, 255, 0.9);
+}
+
+/* 外环：细描边 + 轻微模糊 */
+.custom-cursor-ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 2px solid rgba(99, 102, 241, 0.45);
+  background: rgba(99, 102, 241, 0.06);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transition:
+    width 0.2s ease,
+    height 0.2s ease,
+    margin 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* 悬停可点击元素：外环放大 */
+body.is-custom-cursor.cursor-hover .custom-cursor-ring {
+  width: 48px;
+  height: 48px;
+  margin: -24px 0 0 -24px;
+  border-color: rgba(129, 140, 248, 0.75);
+  background: rgba(99, 102, 241, 0.12);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+}
+
+/* 内点位置由 JS 的 translate3d 控制，此处仅用光晕略加强调 */
+body.is-custom-cursor.cursor-hover .custom-cursor-dot {
+  box-shadow:
+    0 0 16px rgba(99, 102, 241, 0.65),
+    0 0 2px rgba(255, 255, 255, 0.95);
+}
+
+[data-theme="dark"] body.is-custom-cursor .custom-cursor-ring {
+  border-color: rgba(165, 180, 252, 0.5);
+  background: rgba(99, 102, 241, 0.08);
+}
+
+[data-theme="dark"] body.is-custom-cursor.cursor-hover .custom-cursor-ring {
+  border-color: rgba(199, 210, 254, 0.65);
+  box-shadow: 0 0 24px rgba(99, 102, 241, 0.35);
+}
