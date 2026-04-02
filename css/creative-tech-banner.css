@@ -1,6 +1,14 @@
 /* 首页横幅：深色底 + 星点 + 左侧标题可读性（覆盖主题默认变量区） */
+/* 底部略提亮，避免与 ::before 星点叠加后像「整块黑影」压住下方三栏 */
 #random-banner {
-  background: linear-gradient(145deg, #16181d 0%, #0c0e12 55%, #12151c 100%) !important;
+  background: linear-gradient(
+      145deg,
+      #16181d 0%,
+      #14161c 40%,
+      #1a1d26 70%,
+      #1e222c 100%
+    )
+    !important;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -10,7 +18,22 @@
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  opacity: 0.55;
+  opacity: 0.38;
+  /* 星点层在底部淡出，减轻压在分类三栏 / 技能区上的「黑影」感 */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 52%,
+    rgba(0, 0, 0, 0.45) 78%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 52%,
+    rgba(0, 0, 0, 0.45) 78%,
+    transparent 100%
+  );
   background-image:
     radial-gradient(1.5px 1.5px at 10% 20%, rgba(255, 230, 150, 0.95) 0, transparent 100%),
     radial-gradient(1px 1px at 25% 65%, rgba(255, 255, 255, 0.75) 0, transparent 100%),
@@ -60,6 +83,12 @@
   content: none !important;
   box-shadow: none !important;
 }
+
+/* 主题里封面 z-index:-1 时，少数情况下底部会透出卡片深色底，像一条黑影 */
+#todayCard.todayCard,
+.topGroup a#todayCard.todayCard {
+  background: transparent !important;
+}
 #todayCard img.todayCard-cover,
 .topGroup .todayCard .todayCard-cover {
   height: 100% !important;
@@ -70,4 +99,5 @@
   object-position: center center !important;
   opacity: 1 !important;
   filter: none !important;
+  z-index: 0 !important;
 }
