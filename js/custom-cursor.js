@@ -1,16 +1,18 @@
 (function () {
   "use strict";
 
-  if (typeof window === "undefined" || !document.body) return;
-
   function shouldSkip() {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return true;
-    if (window.matchMedia("(pointer: coarse)").matches) return true;
-    if (window.innerWidth < 768) return true;
+    // 仅跳过明显无鼠标的触摸设备；不再用 coarse / 窄屏 / reduced-motion（避免 Win 上被误判）
+    try {
+      if (window.matchMedia("(hover: none)").matches) return true;
+    } catch (e) {
+      return false;
+    }
     return false;
   }
 
   function init() {
+    if (typeof window === "undefined" || !document.body) return;
     if (shouldSkip()) return;
 
     var ring = document.createElement("div");

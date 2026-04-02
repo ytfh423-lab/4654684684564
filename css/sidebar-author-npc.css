@@ -1,11 +1,13 @@
 /* 侧栏作者卡：灰蓝纸感 / 深色渐变（替代高饱和黄底）+ 关闭主题默认炫彩 ::before */
 
 #aside-content > .card-widget.card-info {
-  background: linear-gradient(165deg, #f0f3f8 0%, #e6ecf4 48%, #dde6f0 100%) !important;
+  background-color: #eef2f7 !important;
+  background-image: linear-gradient(165deg, #f0f3f8 0%, #e6ecf4 48%, #dde6f0 100%) !important;
   border-radius: 16px !important;
   overflow: hidden;
   border: 1px solid rgba(30, 41, 59, 0.1);
   box-shadow: 0 10px 32px rgba(15, 23, 42, 0.09) !important;
+  animation: none !important;
 }
 
 [data-theme="dark"] #aside-content > .card-widget.card-info {

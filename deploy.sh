@@ -1,19 +1,23 @@
 #!/usr/bin/env bash
-# =============================================================================
-# 宝塔 / Webhook 部署后钩子 — 本仓库为 Hexo generate 后的纯静态站
-# 不要使用 pnpm / npm run build / VitePress（无 .vitepress/dist）
-# 拉取 main 后若站点根目录就是本仓库目录，通常无需任何构建命令。
-# =============================================================================
+# 宝塔部署后执行：纯静态站，无 pnpm / VitePress
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 cd "$ROOT"
 
 if [[ ! -f index.html ]]; then
-  echo "[deploy.sh] 错误: 当前目录缺少 index.html，请确认 Web 根目录指向仓库根目录。" >&2
+  echo "[deploy] 错误: 未找到 index.html，当前目录: $ROOT" >&2
   exit 1
 fi
 
-echo "[deploy.sh] 静态文件就绪: $ROOT"
-echo "[deploy.sh] 无需 pnpm / vitepress。若仍看到旧脚本报错，请在宝塔网站设置里改掉「部署脚本」。"
-exit 0
+# 网站根目录若配置为「本仓库下的 dist」，保留此段；若直接指向仓库根，可删掉下面到 echo 之间的整段
+rm -rf "$ROOT/dist"
+mkdir -p "$ROOT/dist"
+shopt -s nullglob
+for f in "$ROOT"/*; do
+  b=$(basename "$f")
+  [[ "$b" == .git || "$b" == dist ]] && continue
+  cp -a "$f" "$ROOT/dist/"
+done
+
+echo "[deploy] 成功: 静态文件已在 $ROOT（可选 dist 子目录已同步）"
