@@ -1,17 +1,15 @@
-/* 自定义光标：外环缓动跟随 + 内点；触摸 / 减少动效时不启用（由 JS 不加类名） */
+/* 自定义光标：需配合 html.is-custom-cursor；层级高于预加载层(1001) */
 
-body.is-custom-cursor {
+html.is-custom-cursor,
+html.is-custom-cursor body,
+html.is-custom-cursor body * {
   cursor: none !important;
 }
 
-body.is-custom-cursor * {
-  cursor: none !important;
-}
-
-body.is-custom-cursor input:not([type="checkbox"]):not([type="radio"]),
-body.is-custom-cursor textarea,
-body.is-custom-cursor select,
-body.is-custom-cursor [contenteditable="true"] {
+html.is-custom-cursor input:not([type="checkbox"]):not([type="radio"]),
+html.is-custom-cursor textarea,
+html.is-custom-cursor select,
+html.is-custom-cursor [contenteditable="true"] {
   cursor: text !important;
 }
 
@@ -21,32 +19,29 @@ body.is-custom-cursor [contenteditable="true"] {
   left: 0;
   top: 0;
   pointer-events: none;
-  z-index: 99999;
+  z-index: 2147483647;
   will-change: transform;
   border-radius: 50%;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.15s ease;
 }
 
-body.is-custom-cursor .custom-cursor-dot,
-body.is-custom-cursor .custom-cursor-ring {
+html.is-custom-cursor .custom-cursor-dot,
+html.is-custom-cursor .custom-cursor-ring {
   opacity: 1;
 }
 
-body.is-custom-cursor.cursor-native .custom-cursor-dot,
-body.is-custom-cursor.cursor-native .custom-cursor-ring {
+html.is-custom-cursor.cursor-native .custom-cursor-dot,
+html.is-custom-cursor.cursor-native .custom-cursor-ring {
   opacity: 0;
 }
 
-body.is-custom-cursor.cursor-native {
+html.is-custom-cursor.cursor-native,
+html.is-custom-cursor.cursor-native body,
+html.is-custom-cursor.cursor-native body * {
   cursor: auto !important;
 }
 
-body.is-custom-cursor.cursor-native * {
-  cursor: inherit !important;
-}
-
-/* 内点：实心 + 微光 */
 .custom-cursor-dot {
   width: 8px;
   height: 8px;
@@ -62,7 +57,6 @@ body.is-custom-cursor.cursor-native * {
     0 0 2px rgba(255, 255, 255, 0.9);
 }
 
-/* 外环：细描边 + 轻微模糊 */
 .custom-cursor-ring {
   width: 36px;
   height: 36px;
@@ -80,8 +74,7 @@ body.is-custom-cursor.cursor-native * {
     box-shadow 0.2s ease;
 }
 
-/* 悬停可点击元素：外环放大 */
-body.is-custom-cursor.cursor-hover .custom-cursor-ring {
+html.is-custom-cursor.cursor-hover .custom-cursor-ring {
   width: 48px;
   height: 48px;
   margin: -24px 0 0 -24px;
@@ -90,19 +83,18 @@ body.is-custom-cursor.cursor-hover .custom-cursor-ring {
   box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
 }
 
-/* 内点位置由 JS 的 translate3d 控制，此处仅用光晕略加强调 */
-body.is-custom-cursor.cursor-hover .custom-cursor-dot {
+html.is-custom-cursor.cursor-hover .custom-cursor-dot {
   box-shadow:
     0 0 16px rgba(99, 102, 241, 0.65),
     0 0 2px rgba(255, 255, 255, 0.95);
 }
 
-[data-theme="dark"] body.is-custom-cursor .custom-cursor-ring {
+[data-theme="dark"] html.is-custom-cursor .custom-cursor-ring {
   border-color: rgba(165, 180, 252, 0.5);
   background: rgba(99, 102, 241, 0.08);
 }
 
-[data-theme="dark"] body.is-custom-cursor.cursor-hover .custom-cursor-ring {
+[data-theme="dark"] html.is-custom-cursor.cursor-hover .custom-cursor-ring {
   border-color: rgba(199, 210, 254, 0.65);
   box-shadow: 0 0 24px rgba(99, 102, 241, 0.35);
 }

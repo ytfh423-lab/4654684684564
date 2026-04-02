@@ -1,25 +1,22 @@
-/* 侧栏作者卡：灰蓝纸感 / 深色渐变（替代高饱和黄底）+ 关闭主题默认炫彩 ::before */
+/* 作者栏：与侧栏其它卡片一致（主题变量），彻底关掉主题默认的炫彩 ::before */
 
 #aside-content > .card-widget.card-info {
-  background-color: #eef2f7 !important;
-  background-image: linear-gradient(165deg, #f0f3f8 0%, #e6ecf4 48%, #dde6f0 100%) !important;
-  border-radius: 16px !important;
+  background: var(--anzhiyu-card-bg) !important;
+  border: var(--style-border) !important;
+  box-shadow: var(--anzhiyu-shadow-border) !important;
+  border-radius: 12px !important;
   overflow: hidden;
-  border: 1px solid rgba(30, 41, 59, 0.1);
-  box-shadow: 0 10px 32px rgba(15, 23, 42, 0.09) !important;
-  animation: none !important;
-}
-
-[data-theme="dark"] #aside-content > .card-widget.card-info {
-  background: linear-gradient(165deg, #1c222b 0%, #151a22 50%, #0f1318 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4) !important;
+  padding: 0;
 }
 
 #aside-content > .card-widget.card-info::before {
+  display: none !important;
+  content: none !important;
   animation: none !important;
-  background: transparent !important;
-  background-size: auto !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  background: none !important;
 }
 
 #aside-content .card-info:hover .author-info-avatar,
@@ -30,69 +27,33 @@
 }
 
 #aside-content .card-info .author-info__name {
-  color: #1e293b !important;
-  font-size: 1.35rem !important;
-}
-
-[data-theme="dark"] #aside-content .card-info .author-info__name {
-  color: #f1f5f9 !important;
+  color: var(--anzhiyu-fontcolor) !important;
 }
 
 #aside-content .card-info .author-info__desc {
-  color: rgba(30, 41, 59, 0.78) !important;
-  font-size: 0.85rem !important;
-}
-
-[data-theme="dark"] #aside-content .card-info .author-info__desc {
-  color: rgba(203, 213, 225, 0.88) !important;
+  color: var(--anzhiyu-secondtext) !important;
 }
 
 #aside-content .card-info #author-info__sayhi {
-  background: rgba(255, 255, 255, 0.72) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: #334155 !important;
-  border: 1px solid rgba(255, 255, 255, 0.85);
-}
-
-[data-theme="dark"] #aside-content .card-info #author-info__sayhi {
-  background: rgba(255, 255, 255, 0.08) !important;
-  color: #e2e8f0 !important;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--anzhiyu-fontcolor) !important;
+  background: var(--anzhiyu-maskbgdeep) !important;
+  border: var(--style-border) !important;
 }
 
 #aside-content .card-info .author-info-avatar .avatar-img {
-  border: 4px solid rgba(255, 255, 255, 0.92);
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
-}
-
-[data-theme="dark"] #aside-content .card-info .author-info-avatar .avatar-img {
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  border: 3px solid var(--anzhiyu-secondbg);
+  box-shadow: var(--anzhiyu-shadow-border);
 }
 
 #aside-content .card-info .card-info-social-icons .social-icon {
-  background: rgba(255, 255, 255, 0.65) !important;
-  backdrop-filter: blur(6px);
-  border-radius: 50%;
-  border: 1px solid rgba(30, 41, 59, 0.08);
-  color: #334155 !important;
-}
-
-[data-theme="dark"] #aside-content .card-info .card-info-social-icons .social-icon {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #cbd5e1 !important;
+  background: var(--anzhiyu-secondbg) !important;
+  border: var(--style-border) !important;
+  color: var(--anzhiyu-fontcolor) !important;
 }
 
 #aside-content .card-info .card-info-social-icons .social-icon:hover {
-  background: rgba(255, 255, 255, 0.92) !important;
-  color: #0f172a !important;
-}
-
-[data-theme="dark"] #aside-content .card-info .card-info-social-icons .social-icon:hover {
-  background: rgba(255, 255, 255, 0.14) !important;
-  color: #f8fafc !important;
+  background: var(--anzhiyu-main) !important;
+  color: var(--anzhiyu-white) !important;
 }
 
 #aside-content .card-info .card-info-social-icons .social-icon i {

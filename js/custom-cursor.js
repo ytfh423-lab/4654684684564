@@ -1,21 +1,21 @@
 (function () {
   "use strict";
 
+  var done = false;
+
   function shouldSkip() {
-    // 仅跳过明显无鼠标的触摸设备；不再用 coarse / 窄屏 / reduced-motion（避免 Win 上被误判）
-    try {
-      if (window.matchMedia("(hover: none)").matches) return true;
-    } catch (e) {
-      return false;
-    }
+    if (window.innerWidth < 576) return true;
     return false;
   }
 
   function init() {
-    if (typeof window === "undefined" || !document.body) return;
+    if (done) return;
+    if (!document.body) return;
     if (shouldSkip()) return;
+    if (document.getElementById("custom-cursor-ring-js")) return;
 
     var ring = document.createElement("div");
+    ring.id = "custom-cursor-ring-js";
     ring.className = "custom-cursor-ring";
     ring.setAttribute("aria-hidden", "true");
     var dot = document.createElement("div");
@@ -24,7 +24,9 @@
     document.body.appendChild(ring);
     document.body.appendChild(dot);
 
+    document.documentElement.classList.add("is-custom-cursor");
     document.body.classList.add("is-custom-cursor");
+    done = true;
 
     var mx = 0;
     var my = 0;
@@ -55,11 +57,11 @@
       var native = isNativeCursorZone(el);
 
       if (native) {
-        document.body.classList.add("cursor-native");
-        document.body.classList.remove("cursor-hover");
+        document.documentElement.classList.add("cursor-native");
+        document.documentElement.classList.remove("cursor-hover");
       } else {
-        document.body.classList.remove("cursor-native");
-        document.body.classList.toggle("cursor-hover", isInteractive(el));
+        document.documentElement.classList.remove("cursor-native");
+        document.documentElement.classList.toggle("cursor-hover", isInteractive(el));
       }
 
       ring.style.transform = "translate3d(" + rx + "px," + ry + "px,0)";
@@ -89,7 +91,7 @@
     window.addEventListener(
       "blur",
       function () {
-        document.body.classList.add("cursor-native");
+        document.documentElement.classList.add("cursor-native");
       },
       true
     );
@@ -105,9 +107,9 @@
     );
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
+  document.addEventListener("DOMContentLoaded", init);
+  window.addEventListener("load", init);
+  if (document.readyState !== "loading") {
     init();
   }
 })();
