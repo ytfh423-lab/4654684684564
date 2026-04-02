@@ -1,12 +1,30 @@
-/* 作者栏：与侧栏其它卡片一致（主题变量），彻底关掉主题默认的炫彩 ::before */
+/* 作者栏：柔和渐变底 + 关闭主题炫彩 ::before */
 
 #aside-content > .card-widget.card-info {
-  background: var(--anzhiyu-card-bg) !important;
-  border: var(--style-border) !important;
-  box-shadow: var(--anzhiyu-shadow-border) !important;
-  border-radius: 12px !important;
+  background-color: #eef3fa !important;
+  background-image: linear-gradient(
+    165deg,
+    #f6f9fc 0%,
+    #eef3f9 42%,
+    #e6eef7 100%
+  ) !important;
+  border: 1px solid rgba(15, 23, 42, 0.09) !important;
+  box-shadow: 0 10px 32px rgba(15, 23, 42, 0.08) !important;
+  border-radius: 14px !important;
   overflow: hidden;
   padding: 0;
+}
+
+[data-theme="dark"] #aside-content > .card-widget.card-info {
+  background-color: #1a1f26 !important;
+  background-image: linear-gradient(
+    165deg,
+    #232a33 0%,
+    #1a2028 50%,
+    #14191f 100%
+  ) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.38) !important;
 }
 
 #aside-content > .card-widget.card-info::before {
@@ -36,24 +54,43 @@
 
 #aside-content .card-info #author-info__sayhi {
   color: var(--anzhiyu-fontcolor) !important;
-  background: var(--anzhiyu-maskbgdeep) !important;
-  border: var(--style-border) !important;
+  background: rgba(255, 255, 255, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+[data-theme="dark"] #aside-content .card-info #author-info__sayhi {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: var(--anzhiyu-fontcolor) !important;
 }
 
 #aside-content .card-info .author-info-avatar .avatar-img {
-  border: 3px solid var(--anzhiyu-secondbg);
-  box-shadow: var(--anzhiyu-shadow-border);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="dark"] #aside-content .card-info .author-info-avatar .avatar-img {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
 #aside-content .card-info .card-info-social-icons .social-icon {
-  background: var(--anzhiyu-secondbg) !important;
-  border: var(--style-border) !important;
+  background: rgba(255, 255, 255, 0.55) !important;
+  border: 1px solid rgba(15, 23, 42, 0.06) !important;
   color: var(--anzhiyu-fontcolor) !important;
+}
+
+[data-theme="dark"] #aside-content .card-info .card-info-social-icons .social-icon {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 #aside-content .card-info .card-info-social-icons .social-icon:hover {
   background: var(--anzhiyu-main) !important;
   color: var(--anzhiyu-white) !important;
+  border-color: transparent !important;
 }
 
 #aside-content .card-info .card-info-social-icons .social-icon i {
