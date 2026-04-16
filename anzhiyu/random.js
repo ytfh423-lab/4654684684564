@@ -1,4 +1,4 @@
-var posts=["2026/04/01/hello-world/"];function toRandomPost(){
+var posts=["2026/04/01/hello-world/","2026/04/16/team无资格强开/"];function toRandomPost(){
     pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
   };var friend_link_list=[];
     var refreshNum = 1;
